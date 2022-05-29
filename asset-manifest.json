@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/mesto-react/static/css/main.1c6a7e87.css",
+    "main.js": "/mesto-react/static/js/main.b4206cdb.js",
+    "static/media/Inter-Medium.woff?v=3.19": "/mesto-react/static/media/Inter-Medium.9053572c46aeb4b16caa.woff",
+    "static/media/Inter-Black.woff?v=3.19": "/mesto-react/static/media/Inter-Black.c6938660eec019fefd68.woff",
+    "static/media/Inter-Regular.woff?v=3.19": "/mesto-react/static/media/Inter-Regular.8c206db99195777c6769.woff",
+    "static/media/Inter-Medium.woff2?v=3.19": "/mesto-react/static/media/Inter-Medium.293fd13dbca5a3e450ef.woff2",
+    "static/media/Inter-Black.woff2?v=3.19": "/mesto-react/static/media/Inter-Black.15ca31c0a2a68f76d2d1.woff2",
+    "static/media/Inter-Regular.woff2?v=3.19": "/mesto-react/static/media/Inter-Regular.c8ba52b05a9ef10f4758.woff2",
+    "static/media/logo.svg": "/mesto-react/static/media/logo.e1792cd1bf55c68d1538deb5b248d425.svg",
+    "static/media/heart.svg": "/mesto-react/static/media/heart.7913ddfd147a48616b09.svg",
+    "static/media/status-nok.svg": "/mesto-react/static/media/status-nok.df8eddf661ff88f2d0efd3d570d14309.svg",
+    "static/media/trash.svg": "/mesto-react/static/media/trash.823b0cf1b0b7e9cb7cad209d1e19258f.svg",
+    "static/media/status-ok.svg": "/mesto-react/static/media/status-ok.1b6082f862eac35e2514460237d96ecc.svg",
+    "index.html": "/mesto-react/index.html",
+    "static/media/heart-active.svg": "/mesto-react/static/media/heart-active.fe17a515669479b1e649.svg",
+    "static/media/edit-button.svg": "/mesto-react/static/media/edit-button.a1892ea72cb87c8fc3aa.svg",
+    "static/media/pencil.svg": "/mesto-react/static/media/pencil.a086f758840ae814ecdece4799d2cf40.svg",
+    "static/media/close-button.svg": "/mesto-react/static/media/close-button.2a8be099d30284b451d8.svg",
+    "static/media/plus.svg": "/mesto-react/static/media/plus.d86bb2edc2f6eadb96b7.svg",
+    "main.1c6a7e87.css.map": "/mesto-react/static/css/main.1c6a7e87.css.map",
+    "main.b4206cdb.js.map": "/mesto-react/static/js/main.b4206cdb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1c6a7e87.css",
+    "static/js/main.b4206cdb.js"
+  ]
+}
