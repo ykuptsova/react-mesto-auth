@@ -1,12 +1,7 @@
 import React from 'react'
-import { useHistory, Link } from 'react-router-dom'
-import Header from './Header'
-import InfoTooltip from './InfoTooltip'
-import auth from '../utils/auth'
+import { Link } from 'react-router-dom'
 
-function Register() {
-  const history = useHistory()
-
+function Register(props) {
   const [email, setEmail] = React.useState('')
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -17,45 +12,13 @@ function Register() {
     setPassword(e.target.value)
   }
 
-  const [tooltipStatus, setTooltipStatus] = React.useState(null)
-  const [tooltipTitle, setTooltipTitle] = React.useState(null)
-
   function handleSubmit(e) {
     e.preventDefault()
-    return auth
-      .signup(email, password)
-      .then((res) => {
-        setTooltipStatus('ok')
-        setTooltipTitle('Вы успешно зарегистрировались!')
-      })
-      .catch((err) => {
-        setTooltipStatus('nok')
-        setTooltipTitle(
-          err.error ||
-            err.message ||
-            'Что-то пошло не так! Попробуйте ещё раз.',
-        )
-        console.error(err)
-      })
-  }
-
-  function handleInfoTooltipClose() {
-    const ts = tooltipStatus
-    setTooltipStatus(null)
-    // redirect user to login page on successful registration
-    if (ts === 'ok') {
-      history.push('/sign-in')
-    }
-  }
-
-  function handleGoToSignIn() {
-    history.push('/sign-in')
+    props.onSubmit(email, password)
   }
 
   return (
     <div>
-      <Header buttonLabel="Вход" onButtonClick={handleGoToSignIn} />
-
       <div className="register">
         <h1 className="register__title">Регистрация</h1>
         <form className="register__form" onSubmit={handleSubmit}>
@@ -98,13 +61,6 @@ function Register() {
           </Link>
         </div>
       </div>
-
-      <InfoTooltip
-        title={tooltipTitle}
-        status={tooltipStatus}
-        visible={!!tooltipStatus}
-        onClose={handleInfoTooltipClose}
-      />
     </div>
   )
 }

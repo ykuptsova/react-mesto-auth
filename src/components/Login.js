@@ -1,12 +1,6 @@
 import React from 'react'
-import { useHistory } from 'react-router-dom'
-import Header from './Header'
-import InfoTooltip from './InfoTooltip'
-import auth from '../utils/auth'
 
 function Login(props) {
-  const history = useHistory()
-
   const [email, setEmail] = React.useState('')
   function handleEmailChange(e) {
     setEmail(e.target.value)
@@ -17,41 +11,13 @@ function Login(props) {
     setPassword(e.target.value)
   }
 
-  const [tooltipStatus, setTooltipStatus] = React.useState(null)
-  const [tooltipTitle, setTooltipTitle] = React.useState(null)
-
   function handleSubmit(e) {
     e.preventDefault()
-    auth
-      .signin(email, password)
-      .then((token) => {
-        localStorage.setItem('jwt', token)
-        props.onSignIn()
-        history.push('/')
-      })
-      .catch((err) => {
-        setTooltipStatus('nok')
-        setTooltipTitle(
-          err.error ||
-            err.message ||
-            'Что-то пошло не так! Попробуйте ещё раз.',
-        )
-        console.error(err)
-      })
-  }
-
-  function handleInfoTooltipClose() {
-    setTooltipStatus(null)
-  }
-
-  function handleGoToSignUp() {
-    history.push('/sign-up')
+    props.onSubmit(email, password)
   }
 
   return (
     <div>
-      <Header buttonLabel="Регистрация" onButtonClick={handleGoToSignUp} />
-
       <div className="login">
         <h1 className="login__title">Вход</h1>
         <form className="login__form" onSubmit={handleSubmit}>
@@ -88,13 +54,6 @@ function Login(props) {
           </button>
         </form>
       </div>
-
-      <InfoTooltip
-        title={tooltipTitle}
-        status={tooltipStatus}
-        visible={!!tooltipStatus}
-        onClose={handleInfoTooltipClose}
-      />
     </div>
   )
 }
