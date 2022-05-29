@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Switch } from 'react-router-dom'
@@ -15,6 +16,7 @@ function Routes() {
   const [email, setEmail] = useState(null)
   function handleSignIn() {
     setLoggedIn(true)
+    tokenCheck()
   }
   function handleSignOut() {
     localStorage.removeItem('jwt')
@@ -46,6 +48,7 @@ function Routes() {
         onSignIn={handleSignIn}
       />
       <ProtectedRoute
+        exact
         path="/"
         loggedIn={loggedIn}
         onSignOut={handleSignOut}

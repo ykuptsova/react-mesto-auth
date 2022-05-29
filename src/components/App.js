@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useHistory } from 'react-router-dom'
 
 import CurrentUserContext from '../contexts/CurrentUserContext'
 import api from '../utils/api.js'
@@ -107,6 +106,7 @@ function App(props) {
 
   // fetch currentUser on component mount
   useEffect(() => {
+    if (!props.loggedIn) return
     api
       .getUserInfo()
       .then((data) => {
@@ -120,10 +120,11 @@ function App(props) {
       .catch((error) => {
         console.log('Could not fetch user info:', error)
       })
-  }, [])
+  }, [props.loggedIn])
 
   // fetch cards on current user update
   useEffect(() => {
+    if (!props.loggedIn) return
     api
       .getInitialCards(currentUser._id)
       .then((cards) => {
@@ -132,7 +133,7 @@ function App(props) {
       .catch((error) => {
         console.log('Could not fetch cards:', error)
       })
-  }, [currentUser._id])
+  }, [currentUser._id, props.loggedIn])
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
