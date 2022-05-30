@@ -48,19 +48,20 @@ function App() {
     tokenCheck()
   }, [])
 
-  const [tooltipStatus, setTooltipStatus] = React.useState(null)
-  const [tooltipTitle, setTooltipTitle] = React.useState(null)
+  // const [tooltipStatus, setTooltipStatus] = React.useState(null)
+  // const [tooltipTitle, setTooltipTitle] = React.useState(null)
+  const [tooltip, setTooltip] = React.useState({ status: null, title: null })
 
   function handleInfoTooltipClose() {
     // redirect user to login page on successful registration
     if (
-      tooltipStatus === 'ok' &&
+      tooltip.status === 'ok' &&
       new URL(window.location.href).pathname === '/sign-up'
     ) {
-      setTooltipStatus(null)
+      setTooltip({ ...tooltip, status: null })
       history.push('/sign-in')
     } else {
-      setTooltipStatus(null)
+      setTooltip({ ...tooltip, status: null })
     }
   }
 
@@ -74,12 +75,13 @@ function App() {
         history.push('/')
       })
       .catch((err) => {
-        setTooltipStatus('nok')
-        setTooltipTitle(
-          err.error ||
+        setTooltip({
+          status: 'nok',
+          title:
+            err.error ||
             err.message ||
             'Что-то пошло не так! Попробуйте ещё раз.',
-        )
+        })
         console.error(err)
       })
   }
@@ -88,16 +90,16 @@ function App() {
     return auth
       .signup(email, password)
       .then((res) => {
-        setTooltipStatus('ok')
-        setTooltipTitle('Вы успешно зарегистрировались!')
+        setTooltip({ status: 'ok', title: 'Вы успешно зарегистрировались!' })
       })
       .catch((err) => {
-        setTooltipStatus('nok')
-        setTooltipTitle(
-          err.error ||
+        setTooltip({
+          status: 'nok',
+          title:
+            err.error ||
             err.message ||
             'Что-то пошло не так! Попробуйте ещё раз.',
-        )
+        })
         console.error(err)
       })
   }
@@ -287,9 +289,9 @@ function App() {
       </Switch>
 
       <InfoTooltip
-        title={tooltipTitle}
-        status={tooltipStatus}
-        visible={!!tooltipStatus}
+        title={tooltip.title}
+        status={tooltip.status}
+        visible={!!tooltip.status}
         onClose={handleInfoTooltipClose}
       />
     </CurrentUserContext.Provider>
