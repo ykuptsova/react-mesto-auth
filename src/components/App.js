@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react'
 import { useState, useEffect } from 'react'
 import { useHistory, Switch, Route, Redirect } from 'react-router-dom'
@@ -48,8 +49,6 @@ function App() {
     tokenCheck()
   }, [])
 
-  // const [tooltipStatus, setTooltipStatus] = React.useState(null)
-  // const [tooltipTitle, setTooltipTitle] = React.useState(null)
   const [tooltip, setTooltip] = React.useState({ status: null, title: null })
 
   function handleInfoTooltipClose() {
